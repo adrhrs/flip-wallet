@@ -15,8 +15,8 @@ func NewUserHandler(usecase userUsecase.UserUsecase) {
 	handler := &UserHandler{
 		Usecase: usecase,
 	}
-	http.HandleFunc("/health", handler.getServerHealth)
-	http.HandleFunc("/create_user", handler.registerUser)
-	http.Handle("/get_user", middleware.AuthUser(handler.getUserInfo))
+	http.HandleFunc("/api/v1/system/health", handler.getServerHealth)
+	http.HandleFunc("/api/v1/user/create_user", handler.registerUser)
+	http.Handle("/api/v1/user/get_user", middleware.AuthUser(handler.getUserInfo))
 
 }

@@ -16,9 +16,9 @@ func NewBalanceHandler(usecase balanceUsecase.BalanceUsecase) {
 		Usecase: usecase,
 	}
 
-	http.HandleFunc("/balance_topup", middleware.AuthUser(handler.incrementUserBalance))
-	http.HandleFunc("/balance_read", middleware.AuthUser(handler.getUserBalanceInfo))
-	http.HandleFunc("/transfer", middleware.AuthUser(handler.transferBalance))
-	http.HandleFunc("/top_transactions_per_user", middleware.AuthUser(handler.getTopTransactionByUser))
-	http.HandleFunc("/top_users", middleware.AuthUser(handler.getTopUserByTransaction))
+	http.HandleFunc("/api/v1/balance/balance_topup", middleware.AuthUser(handler.incrementUserBalance))
+	http.HandleFunc("/api/v1/balance/balance_read", middleware.AuthUser(handler.getUserBalanceInfo))
+	http.HandleFunc("/api/v1/balance/transfer", middleware.AuthUser(handler.transferBalance))
+	http.HandleFunc("/api/v1/balance/top_transactions_per_user", middleware.AuthUser(handler.getTopTransactionByUser))
+	http.HandleFunc("/api/v1/balance/top_users", middleware.AuthUser(handler.getTopUserByTransaction))
 }
